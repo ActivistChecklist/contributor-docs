@@ -40,7 +40,7 @@ export default defineConfig({
 				{
 					label: 'Coding',
 					items: [
-						{ label: 'Start coding', slug: 'coding/getting-started' },
+						{ label: 'Start coding', slug: 'coding/start-coding' },
 						{ label: 'Anonymous commits', slug: 'coding/anonymous-commits' },
 					],
 				},
