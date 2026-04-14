@@ -1,0 +1,208 @@
+---
+title: Contributor Style Guide
+description: Guidelines for writing checklists for ActivistChecklist.org
+---
+
+import GoodBad from '../../../components/GoodBad.astro';
+
+We created this guide to help new contributors write guides/pages while maintaining the voice and style present on the site. **Please read it closely** — following these guidelines will help your first draft land much closer to what we're looking for.
+
+
+## Who We Are, Who We Write For
+
+Activist Checklist exists to make digital security accessible to people doing social movement work. Our readers are organizers, protesters, ICE observers, mutual aid volunteers, and anyone engaged in activism or political dissent. They are not security experts. Most are encountering these topics for the first time, often under time pressure and real risk.
+
+We sit in a gap: existing resources were either too simple (a quick list handed out before an action) or too complicated (in-depth guides that made people's eyes glaze over). Our job is to be comprehensive without being overwhelming.
+
+We orient the whole site around this premise: At best, someone is probably going to give us 15-30 minutes of their attention (if they don't click away immediately). These people aren't going to do a threat model. They just want to know what to do. **Everything we write should help someone take action right now with as little friction as possible.**
+
+We are explicit about our politics. We are organizers and activists. We built this site because we believe social movements deserve better tools to protect themselves from state repression and right-wing threats. We name the state as the primary threat for activists. We name right-wing actors as a threat. We encourage dissent — "Do not obey in advance." At the same time, we are careful not to be reckless. We don't encourage illegal activity. We recommend consulting movement-aligned lawyers. We distinguish between legal observation (like filming police) and activities with different risk profiles.
+
+New contributors should be comfortable with this positionality. If you're writing for this site, you're writing for movements, not for a general audience.
+
+
+## Our Principles
+
+* We sound like a trusted friend who happens to know a lot about digital security — fellow organizers sharing what we've learned. 
+* We are warm, direct, and practical. 
+* We are not lecturing, not performing expertise, and not speaking a language no one can understand.
+
+### 1. Start with the risk, name it specifically
+
+Every checklist item and every guide opens by grounding the reader in *why this matters to them specifically*. We don't lead with technical instructions. We lead with the real-world risk.
+
+<GoodBad tone="good" type="blockquote">
+"When police access one person's phone, they can map entire activist networks (your contacts, your Signal chats, your location history, and more)."
+</GoodBad>
+
+<GoodBad tone="bad" type="blockquote">
+"This section covers phone hardening procedures for mobile devices."
+</GoodBad>
+
+Be specific about who the threat is: law enforcement, ICE, the federal government, right-wing adversaries. We don't use vague language like "bad actors" when we can name the actual agency. We link to evidence and cite real cases.
+
+<GoodBad tone="good" type="blockquote">
+"We know that ICE is trying to track anyone who films them."
+</GoodBad>
+
+<GoodBad tone="good" type="blockquote">
+"Tech companies (like Google) often receive government demands to turn over all the account data for an activist."
+</GoodBad>
+
+### 2. Harm reduction, not perfection
+
+We take a harm reduction approach: *start where you are and do what you can.* We never shame someone for their current setup or imply they're doing it wrong. We meet people where they are and give them a clear next step.
+
+<GoodBad tone="good" type="blockquote">
+"Don't let not having a secondary phone stop you from doing this work."
+</GoodBad>
+
+<GoodBad tone="good" type="blockquote">
+"If you feel you have to choose between a long passcode and disabling biometrics, we recommend a longer passcode."
+</GoodBad>
+
+<GoodBad tone="bad" type="blockquote">
+"You should never use Google Maps under any circumstances."
+</GoodBad>
+
+When two good practices conflict, acknowledge the tension honestly and tell the reader which one to prioritize and why.
+
+### 3. Community protection, not just individual protection
+
+Our framing consistently reminds readers that security is collective. A single person's compromised phone can expose an entire organizing network. This is not about paranoia; it is about solidarity.
+
+<GoodBad tone="good" type="blockquote">
+"Your phone doesn't just have *your* data on it. It has your Signal groups, your contacts, photos of community members, threads with other organizers. If it gets seized, your organizing network could be exposed."
+</GoodBad>
+
+Use the framing "this protects your community" alongside "this protects you." Both matter.
+
+### 4. Empower action, not fear
+
+Our opposition wants us to be afraid. We name real threats clearly, but we always follow them with what people can do. Every threat description should be followed by concrete defensive steps. Never leave the reader sitting with fear and no path forward.
+
+<GoodBad tone="good" type="blockquote">
+"But we can do a lot to protect ourselves! That may sound like a lot, but the federal government is not all-powerful (as they would like you to believe)."
+</GoodBad>
+
+<GoodBad tone="good" type="blockquote" title="Good (from the doxxing guide)">
+"Use this information to get bigger, not smaller. We encourage you to use these defensive measures to empower you to keep taking bold action."
+</GoodBad>
+
+We also normalize the reality that getting attention from adversaries can be a sign of effective organizing:
+
+<GoodBad tone="good" type="blockquote">
+"The more successful you are in your work, the more likely you are to eventually face some kind of doxxing or online harassment. Consider it a sign that you're on the right track."
+</GoodBad>
+
+Cheer readers on. Validate that this stuff is hard, and that taking even small steps matters.
+
+<GoodBad tone="good" type="blockquote">
+"Keep speaking out publicly! Moving some conversations to Signal for security isn't about going silent. It's about organizing safely while still voicing criticism of power holders openly."
+</GoodBad>
+
+### 5. Be opinionated and honest about trade-offs
+
+We make clear recommendations. We do not present five equal options and leave the reader to sort it out. We tell them what we recommend, what we use, and why. Then we offer alternatives for people with different needs.
+
+<GoodBad tone="good" type="blockquote">
+"DO: Use Signal" "DO NOT: Use Facebook Messenger, Telegram, regular texts, etc."
+</GoodBad>
+
+<GoodBad tone="good" type="blockquote">
+"We recommend **Brave** because it offers the most privacy without any additional configuration, which is our goal on this site."
+</GoodBad>
+
+When we recommend paid tools, we always note the price, mention that we don't receive commissions, and try to acknowledge the frustration of having to pay for privacy.
+
+But almost every security step also has a usability cost. We never hide that. Name the trade-off and help the reader decide if it's worth it for their situation.
+
+<GoodBad tone="good" type="blockquote">
+"Trade-offs: We recognize there are trade-offs in turning off your phone. Sometimes it is more important to film the police or coordinate with our allies. Think through what is the priority for you."
+</GoodBad>
+
+<GoodBad tone="good" type="blockquote">
+"Downsides to using a VPN: You will encounter more CAPTCHAs on websites. Some websites may block VPN access."
+</GoodBad>
+
+### 6. Use plain language
+
+We use short sentences and everyday language. If a technical term is necessary, we define it immediately, in context. We use contractions ("don't," "won't," "you'll") and parenthetical asides ("yes, we hate Amazon too"). Conversational but not sloppy.
+
+<GoodBad tone="good" type="blockquote">
+"A VPN (Virtual Private Network) helps mask your location and makes you slightly harder to identify."
+</GoodBad>
+
+<GoodBad tone="good" type="blockquote">
+"'People search' sites (also known as 'data brokers') collect information from public and private records to form a 'profile' for basically everyone."
+</GoodBad>
+
+We choose the clearest term as our default — "people search sites" instead of "data brokers," "disappearing messages" instead of "ephemeral messages" — because the plain term just says what it is.
+
+<GoodBad tone="bad">
+* Jargon without immediate definition (OPSEC, OSINT, threat actor, attack surface)
+* Corporate security language ("implement," "deploy," "leverage," "utilize")
+* Condescending framings ("it's easy," "simply do X," "just follow these steps")
+* Passive voice when describing threats ("tracking may occur" instead of "the cops can track you")
+</GoodBad>
+
+
+## Quick Reference: Words and Phrases
+
+### We use
+
+- "Protect yourself," "protect your community," "keep each other safe"
+- "We recommend," "our top recommendation"
+- "Here's why it's important"
+- "If you only have 15-20 minutes, start with these items"
+- "The cops," "law enforcement," "right-wing adversaries"
+- "Your opposition," "bad actor" (when we truly don't know who)
+- "Disappearing messages" (not "ephemeral messages")
+- "People search sites" (not "data brokers")
+- "folks," "y'all," "our people," "our movements"
+
+### We avoid
+
+- Jargon without immediate definition (OPSEC, OSINT, threat actor, attack surface, etc.)
+- "You should" or "you must" without explaining why
+- Scare tactics or doom language ("you WILL be surveilled")
+- Condescending framings ("it's easy," "simply do X," "just follow these steps")
+- Corporate security language ("implement," "deploy," "leverage," "utilize")
+- Passive voice when describing threats
+- Gendered language
+
+
+## Content Standards
+
+### What to cite
+
+- It's better to link to **reporting for a non-technical audience** (404 Media, The Intercept, Wired, The Guardian, EFF, etc) than it is to link to primary research. When needed, we can include links to primary research or more technical resources at the end of a guide under "Learn more"
+- Try not to link to paywalled sites. (We have an automatic paywall bypass for 404 Media since it's so often a source for important reporting.)
+
+### Recommending tools
+
+- We pick tools that are simplest for the user to get running
+- If we recommend more than one tool, make sure the primary recommendation is very obvious to the reader.
+- When there are 1 or 2 other tools that could provide more benefits for different use cases, list those in addition to the primary recommendaiton.
+- Don't recommend more than 3 tools unless absolutely necessary.
+- When recommending tools, we evaluate them ourselves and explain our reasoning.
+- We reference third-party evaluations (like Consumer Reports' data broker study or VPN study) when available.
+
+### What we don't do
+
+- **We don't provide legal advice.** This is in the footer of every page: "We provide info and resources, not legal advice. Consult an attorney for your specific situation."
+- **We don't promise complete anonymity.** We say things like "these steps won't make you invisible, but they'll make it substantially harder for authorities to..." Honesty about limitations builds trust.
+- **We don't recommend tools we haven't vetted.** If we haven't evaluated a tool's privacy policy, ownership, track record, and technical architecture, we don't recommend it. We explicitly call out tools we do NOT recommend (like LastPass or DeleteMe) and explain why.
+- **We don't use affiliate links or accept commissions.** We note this explicitly when recommending paid tools.
+
+
+## Guide Structure and Formatting
+
+For guide structure, checklist item anatomy, formatting conventions, platform path style, and `<Alert>` usage, see the dedicated page:
+
+[Guide Structure and Formatting](/writing/structure/)
+
+
+## Questions?
+
+If anything in this guide is unclear or you have suggestions for improving it, reach out through the [contact page](https://activistchecklist.org/contact/).

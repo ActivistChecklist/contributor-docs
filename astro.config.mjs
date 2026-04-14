@@ -1,0 +1,60 @@
+// @ts-check
+import { defineConfig } from 'astro/config';
+import starlight from '@astrojs/starlight';
+import starlightLinksValidator from 'starlight-links-validator';
+
+import tailwindcss from '@tailwindcss/vite';
+
+// https://astro.build/config
+export default defineConfig({
+	site: 'https://docs.activistchecklist.org',
+	integrations: [
+		starlight({
+			plugins: [starlightLinksValidator()],
+			title: 'Activist Checklist Contributor Guide',
+			favicon: '/favicon-32x32.png',
+			customCss: ['./src/styles/global.css'],
+			social: [
+				{ icon: 'github', label: 'GitHub', href: 'https://github.com/ActivistChecklist/docs.activistchecklist.org' },
+				{ icon: 'blueSky', label: 'Bluesky', href: 'https://bsky.app/profile/activistchecklist.org' },
+			],
+			sidebar: [
+				{ label: 'Get started', slug: '' },
+				{
+					label: 'Writing Guides',
+					items: [
+						{ label: 'Start writing', slug: 'writing/start-writing' },
+						{ label: 'Drafting workflow', slug: 'writing/workflow' },
+						{ label: 'Style guide', slug: 'writing/style' },
+						{ label: 'Page structure & formatting', slug: 'writing/structure' },
+						{ label: 'Using the visual editor', slug: 'writing/visual-editor' },
+					],
+				},
+				{
+					label: 'Translating',
+					items: [
+						{ label: 'Start translating', slug: 'translating/start-translating' },
+						{ label: 'Translation style guide', slug: 'translating/translation-style' },
+					],
+				},
+				{
+					label: 'Coding',
+					items: [
+						{ label: 'Start coding', slug: 'coding/getting-started' },
+						{ label: 'Anonymous commits', slug: 'coding/anonymous-commits' },
+					],
+				},
+				{
+					label: 'Reference',
+					items: [
+						{ label: 'Create an anonymous GitHub account', slug: 'reference/anonymous-github' },
+					],
+				},
+			],
+		}),
+	],
+
+	vite: {
+		plugins: [tailwindcss()],
+	},
+});

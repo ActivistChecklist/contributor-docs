@@ -1,0 +1,123 @@
+---
+title: Contributing Code Anonymously
+description: Configure SSH and local Git identity so your code contributions stay separated from your real identity.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+This guide covers the coding setup after you [create your anonymous GitHub account](/reference/anonymous-github/).
+
+This setup helps make sure your anonymous repositories do not leak your real name, email address, or SSH key, and that commits are signed with your anonymous identity.
+
+If you do not set up this SSH configuration, GitHub may bam your new account, because it sees that you're using the same series of SSH key attempts across multiple accounts when pushing commits.
+
+**Do not:**
+
+- ❌ Put anonymous identity information in global `~/.gitconfig`.
+- ❌ Reuse your regular SSH key. Generate a dedicated key for this account.
+- ❌ Paste your private key anywhere. Share only the public key (`.pub`).
+- ❌ Use GitHub CLI for this account setup (it can default to your primary account).
+
+<Steps>
+1. **Generate a dedicated SSH key**
+
+   Option A (recommended): Generate an SSH key pair in 1Password if you use it. Follow 1Password's docs to [generate a key](https://developer.1password.com/docs/ssh/manage-keys/), [enable the SSH agent](https://developer.1password.com/docs/ssh/agent/), and [enable Git commit signing](https://developer.1password.com/docs/ssh/git-commit-signing/).
+
+   Option B: Generate and load a key manually:
+
+   ```bash
+   ssh-keygen -t ed25519 -C "github_ac" -f ~/.ssh/github_ac
+   eval "$(ssh-agent -s)"
+   ssh-add ~/.ssh/github_ac
+   ```
+
+1. **Add the key to your GitHub account**
+
+   1. Copy your public key:
+
+      ```bash
+      cat ~/.ssh/github_ac.pub
+      ```
+
+   2. In GitHub, open **Settings -> SSH and GPG keys** and add the key as an **SSH authentication key**.
+   3. On the same page, add the same public key again as a **signing key**.
+
+1. **Set up your SSH config**
+
+   Add **one** of these blocks to `~/.ssh/config`:
+
+   ```ini
+   ## OPTION A: If you use 1Password for your SSH keys
+   Host github.com-ac
+     HostName github.com
+     User git
+     IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+     IdentityFile ~/.ssh/github_ac.pub
+     IdentitiesOnly yes
+   
+   ## OPTION B: If you are using a regular SSH key
+   Host github.com-ac
+     HostName github.com
+     User git
+     IdentityFile ~/.ssh/github_ac
+     IdentitiesOnly yes
+   ```
+
+1. **Configure your repository's local Git identity**
+
+   Edit your repository's local `.git/config`. Do not put this in global `~/.gitconfig`.
+
+   Replace `YOUR_NEW_ANONYMOUS_EMAIL` and `YOUR_NEW_ANONYMOUS_USERNAME` with your anonymous email and username.
+
+   Update `YOUR_NEW_ANONYMOUS_USERNAME/ActivistChecklist.git` with your fork of the repo.
+
+   ```ini
+   [user]
+   	email = YOUR_NEW_ANONYMOUS_EMAIL
+   	name = YOUR_NEW_ANONYMOUS_USERNAME
+   [user]
+   	signingkey = ssh-ed25519 AAAACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+   [gpg]
+   	format = ssh
+   # Uncomment the next 2 lines if you use 1Password for SSH signing
+   #[gpg "ssh"]
+   #	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+   [commit]
+   	gpgsign = true
+   [remote "origin"]
+   	url = git@github.com-ac:YOUR_NEW_ANONYMOUS_USERNAME/ActivistChecklist.git
+   	fetch = +refs/heads/*:refs/remotes/origin/*
+   [branch "main"]
+   	remote = origin
+   	merge = refs/heads/main
+   	vscode-merge-base = origin/main
+   ```
+
+   For `signingkey`, copy the full contents of your public key file (`~/.ssh/github_ac.pub`). Never use your private key.
+
+1. **Update your remote to use the SSH alias**
+
+   ```bash
+   cd PATH_TO_REPO
+   git remote remove origin
+   git remote add origin git@github.com-ac:YOUR_NEW_ANONYMOUS_USERNAME/ActivistChecklist.git
+   git remote -v
+   # Should show github.com-ac, not github.com or https://
+   ssh -T git@github.com-ac
+   # Should say "successfully authenticated"
+   ```
+
+1. **Test the setup**
+
+   Make a test commit to verify your identity and signing setup:
+
+   ```bash
+   git checkout -b feature/test-commit
+   git commit -am "Test commit"
+   git log
+   # Verify author name and email are your anonymous ones
+   git push -u origin feature/test-commit
+   ```
+
+   Then open the repository in your browser and confirm the commit shows up under your anonymous account.
+</Steps>

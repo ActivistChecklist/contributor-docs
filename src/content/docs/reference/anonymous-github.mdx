@@ -1,0 +1,52 @@
+---
+title: Create an Anonymous GitHub Account
+description: Set up a GitHub account and local Git config that are separated from your real identity.
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+This guide helps you create a GitHub identity that is separate from your real-world identity.
+
+The goal is to keep your **publicly visible GitHub identity** separate from your real identity.
+
+Creating an anonymous GitHub account is optional. You can consider it if you are worried about state repression or doxxing from your contributions to this site. 
+
+:::caution
+This guide is not designed to keep you fully safe from government surveillance. Staying fully anonymous online is very hard and requires stricter practices that are [beyond the scope](https://inteltechniques.com/book7.html) of this guide.
+:::
+
+## Before you start
+
+- ❌ Do not use your real name, existing username, or any handle tied to your identity.
+- ❌ Do not use your real email address for anything in this process.
+- ❌ Do not use your credit card for anything except your VPN.
+- ✅ (Encouraged but optional) Keep your [VPN](https://activistchecklist.org/essentials/#vpn) on when signing up for each service in this process.
+
+## Creating your anonymous GitHub account
+
+<Steps>
+1. **Install a trusted VPN**
+
+   Install [Mullvad VPN](https://mullvad.net) or another trusted no-log VPN.
+
+   Pay for it (yearly is recommended), turn it on, and keep it on for every step that follows. You can use your credit card. It does not need to be paid for anonymously. The goal is to keep your IP address out of your account creation trail.
+
+1. **Create a new anonymous email account**
+
+   1. Go to [Tuta](https://tuta.com/) or [Mailum](https://mailum.com/) (end-to-end encrypted email providers). Use your VPN to access these sites.
+   2. Create an account. Do not pick a username connected to your identity or any account you already use.
+   3. If helpful, use this [random identity generator](https://strongphrase.net/identity) to pick a username.
+   4. When prompted, choose the free plan.
+
+1. **Create your GitHub account**
+
+   1. Go to [GitHub](https://github.com/) with your VPN still active.
+   2. Sign up using your new email account.
+   3. Pick a new username with no ties to your real accounts.
+   4. Complete email verification.
+   5. Leave profile details blank (bio, avatar, location, and social links).
+</Steps>
+
+## Next step for coders
+
+If you plan to contribute code under this anonymous identity, continue with [Contributing Code Anonymously](/coding/anonymous-commits/).

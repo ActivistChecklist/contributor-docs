@@ -1,0 +1,74 @@
+---
+title: Page Structure & Formatting
+description: Structural and formatting standards for ActivistChecklist.org guides.
+---
+
+When writing guides, pages, and checklist items, follow these structural and formatting standards.
+
+## Guide-level structure
+
+Every **guide** follows a consistent pattern:
+
+1. **Title**: Short, action-oriented or descriptive. Examples: "Security Essentials," "Prepare for a Protest," "Doxxing Defense Checklist."
+2. **Metadata line**: "Last reviewed on [date]" and "Takes about [time estimate]."
+3. **Introductory section**: 2-4 paragraphs that explain:
+   1. who this guide is for (and who it is NOT for, if applicable),
+   2. what it covers,
+   3. what risks it addresses (and what it does *NOT* cover, if applicable),
+   4. and a reminder that people can take practical steps to protect themselves and their community. End this section with something empowering.
+4. **Sections organized by risk level**: We usually use a tiered system. Each tier should include a short description of who it is for.
+   - **Baseline / "everyone"**: steps for anyone doing the work.
+   - **Enhanced / "medium-threat"**: steps for people in leadership or visible roles.
+   - **High-profile / "high-threat"**: steps for people at serious risk of targeting.
+   - Not every guide needs risk-level sections if another structure is clearer (example: [Emergency Guide](https://activistchecklist.org/emergency)).
+   - You can have more than one section for a risk level. Example: the [Essentials](https://activistchecklist.org/essentials/) guide has a "get started" section before the main "everyone" section.
+8. **Cross-links**: End each guide with "Keep learning with these related guides" linking to 2-3 relevant checklists.
+
+
+**Section ordering**: If a guide uses risk levels, order sections as everyone, then medium threat, then high threat.
+
+**Section length (checklist items per section)**:
+1. 4-7 checklist items is ideal.
+2. 10 checklist items is the maximum. Above this, break into smaller groups.
+
+**Checklist item ordering**:
+1. Put the highest-impact items at the top.
+2. Also balance for ease and momentum. If the most important task is long and complex, it can be useful to place one or two quick wins first.
+
+   Use this prioritization question when ordering items:
+
+   *If I could only recommend one step, what would it be? Then what are the next one or two highest-impact steps?*
+
+## Checklist item structure
+
+Each **checklist item** follows this pattern:
+
+1. **Headline**: A clear, imperative statement of what to do. The title should still be useful even if someone does not expand the item.
+   - Good: "Set your phone passcode to 8 to 10 random digits"
+   - Good: "Disable face/fingerprint unlock (biometrics)"
+   - Not our style: "Passcode considerations"
+2. **One-line summary** (subtitle): A short sentence explaining the benefit. Not all items need one.
+   - "It takes years for cops to crack an 8-digit random passcode. They can probably guess your current passcode in less than 5 minutes with automated tools."
+3. **DO / DO NOT block** (when applicable): A quick, scannable recommendation pair. Bold tool names.
+4. **Context paragraph(s)**: 1-3 paragraphs for threat context, rationale, and trade-offs.
+   1. Start with 1-2 sentences naming the threat in plain language, with evidence links when possible.
+   2. Follow with 2-3 sentences explaining how the intervention helps.
+   3. Add any decision-making context or caveats needed for the reader.
+   4. Keep this section as short as possible.
+5. **How-to section**: Step-by-step instructions, platform by platform (iPhone, Android, Mac, Windows where relevant). Use numbered lists for sequences and bold key actions.
+6. **Notes, caveats, and alternatives**: Add edge cases, warnings, and fallback options after the main instructions.
+
+## Platforms and menu path style
+
+Use this format in `<HowTo>` boxes and similar instruction sections:
+
+- *On iPhone:* Open Signal > Settings > Notifications > Notification Content > Select "**No Name or Content**"
+- *On Android:* Open Signal > Settings > Notifications > Show > Select "**No name or message**"
+
+## Alert usage
+
+Use `<Alert>` components in context, how-to, or notes sections as needed:
+
+1. `info` (or `default`) for asides and FYIs.
+2. `success` for encouragement and practical tips.
+3. `warning` for cautions, limitations, and gotchas.

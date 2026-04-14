@@ -1,0 +1,40 @@
+---
+interface Props {
+  tone?: "good" | "bad";
+  type?: "blockquote";
+  title?: string;
+}
+
+const { tone = "good", type, title } = Astro.props as Props;
+
+const isGood = tone === "good";
+const isBlockquote = type === "blockquote";
+const label = title ?? (isGood ? "Good" : "Not our style");
+const icon = isGood ? "✅" : "❌";
+const toneClasses = isGood
+  ? "border-l-green-700 bg-green-500/15"
+  : "border-l-red-700 bg-red-500/15";
+const quoteBorderClasses = isGood
+  ? "border-l-green-700/40"
+  : "border-l-red-700/40";
+---
+
+<aside class={`not-content my-4 rounded-lg p-3 ${toneClasses}`}>
+  <div class="mb-0 inline-flex items-center gap-2 font-bold leading-tight">
+    <span aria-hidden="true" class="inline-block">{icon}</span>
+    <span>{label}</span>
+  </div>
+  {
+    isBlockquote ? (
+      <blockquote
+        class={`mt-1 ml-0 border-l-4 pl-3 italic [&>*:first-child]:mt-0 [&>*:last-child]:mb-0 ${quoteBorderClasses}`}
+      >
+        <slot />
+      </blockquote>
+    ) : (
+      <div class="mt-1 [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
+        <slot />
+      </div>
+    )
+  }
+</aside>

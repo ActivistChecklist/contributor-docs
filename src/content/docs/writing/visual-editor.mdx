@@ -1,0 +1,56 @@
+---
+title: Using the Visual Editor
+description: Learn how to edit Activist Checklist content using the visual editor.
+---
+
+import { LinkButton, Steps } from '@astrojs/starlight/components';
+import contributeKeystaticDashboard from '../../../assets/contribute-keystatic-dashboard.png';
+import contributePreviewButton from '../../../assets/contribute-preview-button.png';
+import contributePullRequest from '../../../assets/contribute-pull-request.png';
+
+
+**It's easy to edit this site!** Anyone can contribute content to our site using our visual editor backend. All you need is a GitHub account. You don't have to know how to code or use GitHub.
+
+
+The visual editor is optional. If you're comfortable working with code, you can edit the `.mdx` files directly in your fork and submit a pull request.
+
+
+<Steps>
+1. **Create a GitHub account** if you don't have one already. Depending on your risk tolerance, you might consider creating an [anonymous GitHub account](/reference/anonymous-github/) if you prefer to keep your identity separate from your contributions.
+
+1. **Copy** the repository to your GitHub account.
+
+    <LinkButton href="https://github.com/ActivistChecklist/ActivistChecklist/fork" icon="external">
+      Copy the repository
+    </LinkButton>
+
+1. **Install the app** to connect your GitHub account to the visual editor. Give it permission only for the Activist Checklist repository you just forked.
+
+    <LinkButton href="https://github.com/apps/activistchecklist-keystatic/installations/new?state=close" icon="external">
+      Install Activist Checklist Keystatic app
+    </LinkButton>
+
+1. **Open the visual editor.**
+
+    <LinkButton href="https://activistchecklist.up.railway.app/keystatic/" icon="external">
+      Open the visual editor
+    </LinkButton>
+
+1. **Click "New branch..."** and use a short name that describes the changes you plan to make.
+
+    :::note
+    You may see an error after creating the branch. Refresh the page and you should see that the branch was created successfully.
+    :::
+
+1. **Make your edits.** Find the guide or page you want to edit. If you want to edit a checklist item within a guide, open that guide first, then open the checklist item from there.
+
+    ![Visual editor dashboard: collections and entries]({contributeKeystaticDashboard})
+
+1. **Preview** (optional) by clicking the **Preview** button to see the site with your changes.
+
+    ![Preview button in the visual editor]({contributePreviewButton})
+
+1. **Click "Create pull request"** when you're ready to submit your changes for review. We'll communicate in the pull request thread if any adjustments are needed before publishing.
+
+    ![Create pull request control in GitHub]({contributePullRequest})
+</Steps>

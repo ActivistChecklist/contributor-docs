@@ -1,0 +1,187 @@
+@layer base, starlight, theme, components, utilities;
+
+@import '@astrojs/starlight-tailwind';
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+@layer base {
+  @font-face {
+    font-display: swap;
+    font-family: 'Libre Franklin';
+    font-style: normal;
+    font-weight: 500;
+    src: url('/fonts/libre-franklin-v20-latin-500.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: 'Libre Franklin';
+    font-style: normal;
+    font-weight: 600;
+    src: url('/fonts/libre-franklin-v20-latin-600.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: 'Libre Franklin';
+    font-style: normal;
+    font-weight: 700;
+    src: url('/fonts/libre-franklin-v20-latin-700.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: 'Libre Franklin';
+    font-style: normal;
+    font-weight: 800;
+    src: url('/fonts/libre-franklin-v20-latin-800.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: 'Source Sans 3';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/source-sans-3-v19-latin-regular.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: 'Source Sans 3';
+    font-style: normal;
+    font-weight: 500;
+    src: url('/fonts/source-sans-3-v19-latin-500.woff2') format('woff2');
+  }
+}
+
+/* Dark mode colors. */
+:root {
+  --font-sans:
+    'Source Sans 3',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  --font-heading:
+    'Libre Franklin',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  --sl-color-accent-low: #26206b;
+  --sl-color-accent: #5f50fb;
+  --sl-color-accent-high: #c6cfff;
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #eceef2;
+  --sl-color-gray-2: #c0c2c7;
+  --sl-color-gray-3: #888b96;
+  --sl-color-gray-4: #545861;
+  --sl-color-gray-5: #353841;
+  --sl-color-gray-6: #24272f;
+  --sl-color-black: #17181c;
+  --sl-color-hairline: #888b96;
+}
+
+/* Light mode colors. */
+:root[data-theme='light'] {
+  --sl-color-accent-low: #d7ddff;
+  --sl-color-accent: #5f50fb;
+  --sl-color-accent-high: #211f70;
+  --sl-color-white: #17181c;
+  --sl-color-gray-1: #24272f;
+  --sl-color-gray-2: #353841;
+  --sl-color-gray-3: #545861;
+  --sl-color-gray-4: #888b96;
+  --sl-color-gray-5: #c0c2c7;
+  --sl-color-gray-6: #eceef2;
+  --sl-color-gray-7: #f5f6f8;
+  --sl-color-black: #ffffff;
+  --sl-color-hairline: #c0c2c7;
+}
+
+@layer base {
+  html,
+  body {
+    font-family: var(--font-sans);
+    font-size: 17px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  h1 {
+    font-weight: 800;
+  }
+
+  h2,
+  h3 {
+    font-weight: 700;
+  }
+
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+  }
+}
+
+@layer utilities {
+  :where(.sl-markdown-content) :not(h1, h2, h3, h4, h5, h6, .sl-heading-wrapper) + .sl-heading-wrapper.level-h2 {
+    margin-top: 0;
+  }
+
+  :where(.sl-markdown-content) .sl-heading-wrapper.level-h2 {
+    margin-bottom: calc(var(--spacing) * 6);
+    padding-top: calc(var(--spacing) * 16);
+    position: relative;
+    width: 100%;
+  }
+
+  :where(.sl-markdown-content) .sl-heading-wrapper.level-h2::before {
+    border-top: 1px solid var(--sl-color-hairline);
+    content: ' ';
+    display: block;
+    height: 1px;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 2.1rem;
+  }
+
+  :where(.sl-markdown-content, .hero, .main-pane) h1 {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+
+  :where(.sl-markdown-content, .hero, .main-pane) :is(h2, h3) {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  :where(.sl-markdown-content) h3 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  :where(.sl-markdown-content, .hero, .main-pane) :is(h4, h5, h6) {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+}
