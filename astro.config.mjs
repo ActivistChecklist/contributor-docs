@@ -25,6 +25,7 @@ export default defineConfig({
 						{ label: 'Homepage', slug: '' },
 						{ label: 'Getting started', slug: 'getting-started' },
 						{ label: 'Code of conduct', slug: 'getting-started/code-of-conduct' },
+						{ label: 'Protecting your privacy', slug: 'getting-started/protecting-your-privacy' },
 					],
 				},
 				{
