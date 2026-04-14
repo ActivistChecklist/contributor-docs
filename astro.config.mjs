@@ -19,7 +19,14 @@ export default defineConfig({
 				{ icon: 'blueSky', label: 'Bluesky', href: 'https://bsky.app/profile/activistchecklist.org' },
 			],
 			sidebar: [
-				{ label: 'Get started', slug: '' },
+				{
+					label: 'Getting started',
+					items: [
+						{ label: 'Homepage', slug: '' },
+						{ label: 'Getting started', slug: 'getting-started' },
+						{ label: 'Code of conduct', slug: 'getting-started/code-of-conduct' },
+					],
+				},
 				{
 					label: 'Writing Guides',
 					items: [
