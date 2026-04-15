@@ -3,9 +3,11 @@ title: Translation Style Guide
 description: Guidelines for translating Activist Checklist content.
 ---
 
+import GoodBad from '../../../components/GoodBad.astro';
+
 ## How to use this guide
 
-This guide is a reference for translating Activist Checklist content. It is not a strict set of rules, but a guide to help you understand the context and tone of the content.
+This guide is a reference for translating Activist Checklist content. It is not a strict set of rules, but a guide to help you understand the context and tone of the content. The English voice, examples, and writing principles you are translating from are documented in the [Contributor style guide](/writing/style/).
 
 When translating, use your best judgment to apply the principles and guidelines in this guide. If you are not sure about something, ask the community for advice.
 
@@ -17,7 +19,23 @@ Readers are everyday people involved in community organizing, protest, mutual ai
 
 **We are peers, not experts.** Write as a fellow organizer sharing practical knowledge, not as a professional lecturing. The English source uses "we," "you," "folks," and casual phrasing. Never talk down to readers.
 
+<GoodBad tone="good" type="blockquote">
+"We use passphrases because they're easier to remember than random strings of characters."
+</GoodBad>
+
+<GoodBad tone="bad" type="blockquote">
+"Users should employ passphrases to enhance credential security."
+</GoodBad>
+
 **We name power directly.** Use informal terms for authorities — "the cops," not "law enforcement" or "police officers." Use the natural colloquial equivalent in your target language. Say "surveillance," not "monitoring." Be clear about who poses threats and why.
+
+<GoodBad tone="good" type="blockquote">
+"The cops can subpoena your messages from your provider."
+</GoodBad>
+
+<GoodBad tone="bad" type="blockquote">
+"Law enforcement may legally request communications data from your service provider."
+</GoodBad>
 
 **We center collective safety.** Frame security as mutual protection: "protecting yourself helps protect your community."
 
@@ -64,6 +82,14 @@ Use the precise, established translation for technical security terms in your ta
 
 Technical terms in the source are often followed by an explanation when they first appear. Preserve this structure.
 
+<GoodBad tone="good" type="blockquote">
+"Signal uses end-to-end encryption, which means only you and the person you're talking to can read the messages."
+</GoodBad>
+
+<GoodBad tone="bad" type="blockquote">
+"Signal uses strong security so your chats stay private."
+</GoodBad>
+
 ## Activist and Organizing Terminology
 
 Terms like "direct action," "mutual aid," "organizing," and "comrade" carry specific political meaning. Translate using terms recognized in the target language's activist communities, not generic dictionary translations. Translate "at-risk" to convey elevated danger, not vulnerability in a patronizing sense.
@@ -86,5 +112,13 @@ Some content is very US-specific (FOIA, NLG, specific laws and agencies). When t
 
 - Prefer Latin American Spanish over Castilian Spanish.
 - Use **usted**, not tú. In most Latin American countries, usted is standard even among peers and does not carry the formal or distant connotation it has in Spain. Warmth comes from plain vocabulary and direct tone, not pronoun choice.
+
+<GoodBad tone="good" type="blockquote" title="Good (Latin American convention)">
+"¿Puede apagar la ubicación antes de salir?"
+</GoodBad>
+
+<GoodBad tone="bad" type="blockquote" title="Not our style for this project">
+"¿Puedes apagar la ubicación antes de salir?"
+</GoodBad>
 - Choose the simplest, most natural synonym available. Avoid bureaucratic or overly formal phrasing.
 - Prefer concise, natural Spanish flow over a literal match to the English source structure.

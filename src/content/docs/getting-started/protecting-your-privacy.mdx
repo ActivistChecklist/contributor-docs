@@ -1,10 +1,47 @@
 ---
 title: Protecting your privacy
-description: Reduce risk to yourself while contributing to Activist Checklist.
+description: Decide whether you need to keep this project separate from your real-world identity before you set up accounts and tools.
 ---
 
-## Before you contribute
+import { LinkButton } from '@astrojs/starlight/components';
 
-## Accounts and identities
+Contributing here happens **in public**: issues, pull requests, commit metadata, usernames, translation activity logs, etc. all leave a trail. 
 
-## Related resources
+**For many people that is fine.**
+
+Others should plan for that trail. That is especially true if you expect to contribute a lot over time. It is also true if tying this work to your legal name or everyday life could put your safety, job, immigration status, or family at risk.
+
+**Ask yourself:** if your participation were searchable and stayed online for years, could that cause real harm to you or people close to you? If the answer is *maybe* or *yes*, we strongly encourage you to plan for stronger privacy before you contribute.
+
+No account setup is perfect, and this page is not legal or personal security advice. It only helps you decide **whether** you need stronger separation.
+
+
+:::caution
+This guide is not designed to keep you fully protected from government surveillance. Staying fully anonymous online is very hard and requires stricter practices that are [beyond the scope](https://inteltechniques.com/book7.html) of this guide. The steps here will help you form being publicly linked to the project.
+:::
+
+## Next steps by role
+
+### Writers, editors, and coders
+
+Writing and coding contributions go through GitHub. If you want stronger separation, create a dedicated GitHub account and use it only for this work.
+
+<LinkButton href="/reference/anonymous-github/" icon="right-arrow">
+  Create an anonymous GitHub account
+</LinkButton>
+
+### Translators
+
+If you may want to use a new anonymous email address for translations when signing up for Crowding.
+* Consider using a dedicated address from a privacy-friendly provider such as [Tuta](https://tuta.com) or [Mailum](https://mailum.com). 
+* Consider using a [random username](https://strongphrase.net/username) for your Crowdin account.
+
+### Coders
+
+If you push code from your own machine, configure Git and SSH so commits and keys do not leak your regular identity—even if you already use a separate GitHub account.
+
+<LinkButton href="/coding/anonymous-commits/" icon="right-arrow">
+  Contributing code anonymously
+</LinkButton>
+
+If you are fine using your usual accounts, continue from [Getting started](/getting-started/) and pick how you want to contribute (writing, translating, or coding).

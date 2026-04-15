@@ -5,7 +5,7 @@ description: Configure SSH and local Git identity so your code contributions sta
 
 import { Steps } from '@astrojs/starlight/components';
 
-This guide covers the coding setup after you [create your anonymous GitHub account](/reference/anonymous-github/).
+This guide covers the coding setup after you [create your anonymous GitHub account](/reference/anonymous-github/). If you are still deciding whether you need this kind of separation, read [Protecting your privacy](/getting-started/protecting-your-privacy/) first.
 
 This setup helps make sure your anonymous repositories do not leak your real name, email address, or SSH key, and that commits are signed with your anonymous identity.
 
@@ -17,6 +17,8 @@ If you do not set up this SSH configuration, GitHub may bam your new account, be
 - ❌ Reuse your regular SSH key. Generate a dedicated key for this account.
 - ❌ Paste your private key anywhere. Share only the public key (`.pub`).
 - ❌ Use GitHub CLI for this account setup (it can default to your primary account).
+
+## Configure your anonymous SSH setup
 
 <Steps>
 1. **Generate a dedicated SSH key**
