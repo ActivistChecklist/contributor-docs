@@ -31,11 +31,11 @@ export default defineConfig({
 				{
 					label: 'Writing Guides',
 					items: [
-						{ label: 'Start writing', slug: 'writing/start-writing' },
-						{ label: 'Drafting workflow', slug: 'writing/workflow' },
+						{ label: 'Start editing and writing', slug: 'writing/start-writing' },
+						{ label: 'Using the visual editor', slug: 'writing/visual-editor' },
+						{ label: 'Writing a guide from scratch', slug: 'writing/writing-a-guide-from-scratch' },
 						{ label: 'Style guide', slug: 'writing/style' },
 						{ label: 'Page structure & formatting', slug: 'writing/structure' },
-						{ label: 'Using the visual editor', slug: 'writing/visual-editor' },
 					],
 				},
 				{
