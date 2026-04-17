@@ -46,8 +46,8 @@ export default defineConfig({
 					items: [
 						{ label: 'Start editing and writing', slug: 'writing/start-writing' },
 						{ label: 'Using the visual editor', slug: 'writing/visual-editor' },
-						{ label: 'Writing a guide from scratch', slug: 'writing/writing-a-guide-from-scratch' },
 						{ label: 'Style guide', slug: 'writing/style' },
+						{ label: 'Writing a guide from scratch', slug: 'writing/writing-a-guide-from-scratch' },
 						{ label: 'Page structure & formatting', slug: 'writing/structure' },
 					],
 				},

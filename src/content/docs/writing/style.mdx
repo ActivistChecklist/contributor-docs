@@ -173,19 +173,21 @@ We choose the clearest term as our default — "people search sites" instead of 
 
 ## Content Standards
 
+### How we pick tools to recommend
+
+- **Usability is the top criterion.** Pick the tool that works out-of-the-box with strong defaults, even when a more configurable option is theoretically more secure. If people won't stick with it, it doesn't protect them. (Brave as primary, Firefox as secondary for folks willing to configure it.)
+- **Optimize for long-term usability.** Switching tools is painful, so pick ones readers can stay with for years: low setup friction, good defaults, active development, and a business model aligned with privacy. (1Password over KeePassXC, since KeePassXC's clunky interface makes people abandon it.)
+- **One clear primary recommendation.** Make the top pick obvious. Include 1-2 alternatives only when they serve genuinely different needs. No more than 3 tools total unless absolutely necessary. (Mullvad as top pick, IVPN for auto-renewal, Proton VPN if they want a free option.)
+- **Only recommend tools we've vetted.** Check the privacy policy, ownership, track record, and technical architecture ourselves. If we haven't done that work, we don't recommend it. (We wrote a whole position page explaining why we still trust Proton despite concerns about their CEO.)
+- **Name popular tools we don't recommend.** If readers are likely to ask "what about X?", address it directly with a brief reason. (We call out LastPass, DeleteMe, Nord VPN, ExpressVPN, and Surfshark by name.)
+- **Name the price and the trade-offs up front.** Put the cost in the DO line and name real usability costs so readers can decide if it's worth it. ("$20/year" for EasyOptOuts; "you'll encounter more CAPTCHAs" for VPNs.)
+- **Cite third-party evaluations when available.** Independent audits, Consumer Reports studies, and published court cases carry more weight than our own word. (The Consumer Reports data broker study gives us the 27% vs 65% vs 68% numbers for DeleteMe vs EasyOptOuts vs Optery.)
+- **Prefer tools whose business model aligns with privacy.** Tools that make money from surveillance are bad picks even when they work well. Tools that structurally can't hand over your data are strong picks. (Google Voice is "less private" because Google is where cops subpoena first; Mullvad gets praise for not storing payment info.)
+
 ### What to cite
 
 - It's better to link to **reporting for a non-technical audience** (404 Media, The Intercept, Wired, The Guardian, EFF, etc) than it is to link to primary research. When needed, we can include links to primary research or more technical resources at the end of a guide under "Learn more"
 - Try not to link to paywalled sites. (We have an automatic paywall bypass for 404 Media since it's so often a source for important reporting.)
-
-### Recommending tools
-
-- We pick tools that are simplest for the user to get running
-- If we recommend more than one tool, make sure the primary recommendation is very obvious to the reader.
-- When there are 1 or 2 other tools that could provide more benefits for different use cases, list those in addition to the primary recommendaiton.
-- Don't recommend more than 3 tools unless absolutely necessary.
-- When recommending tools, we evaluate them ourselves and explain our reasoning.
-- We reference third-party evaluations (like Consumer Reports' data broker study or VPN study) when available.
 
 ### What we don't do
 
@@ -197,9 +199,7 @@ We choose the clearest term as our default — "people search sites" instead of 
 
 ## Guide Structure and Formatting
 
-For guide structure, checklist item anatomy, formatting conventions, platform path style, and `<Alert>` usage, see the dedicated page:
-
-[Guide Structure and Formatting](/writing/structure/)
+For guide structure, checklist item anatomy, formatting conventions, platform path style, see this page: [Page structure & formatting](/writing/structure/)
 
 
 ## Questions?
