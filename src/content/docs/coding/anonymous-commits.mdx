@@ -18,6 +18,21 @@ If you do not set up this SSH configuration, GitHub may bam your new account, be
 - ❌ Paste your private key anywhere. Share only the public key (`.pub`).
 - ❌ Use GitHub CLI for this account setup (it can default to your primary account).
 
+## Hide your email in commits
+
+**When this helps:** Use GitHub’s **`noreply`** address when you contribute with your **normal GitHub account** but do not want a **real email or legal name** showing in commit metadata. Commits store both `user.email` and `user.name`, so set both to values you are fine exposing publicly (for example your GitHub username). Use `--global` only for that everyday account—not alongside the **local** anonymous identity below.
+
+**When this is optional:** If you use the **per-repository** `[user]` settings in [Configure your anonymous SSH setup](#configure-your-anonymous-ssh-setup), skip this—your commits already use your anonymous email and name, and you must not put that identity in global `~/.gitconfig`.
+
+**Settings:** In **[Settings → Emails](https://github.com/settings/emails)**, enable **Keep my email addresses private** and copy your **`@users.noreply.github.com`** address. Optionally enable **Block command line pushes that expose my email** so GitHub rejects pushes when commits still use a private address from your account ([details](https://docs.github.com/en/account-and-profile/how-tos/email-preferences/blocking-command-line-pushes-that-expose-your-personal-email-address)).
+
+```bash
+git config --global user.name "YOUR_PUBLIC_OR_GITHUB_USERNAME"
+git config --global user.email "YOUR_NOREPLY@users.noreply.github.com"
+```
+
+[Setting your commit email address](https://docs.github.com/en/account-and-profile/how-tos/email-preferences/setting-your-commit-email-address)
+
 ## Configure your anonymous SSH setup
 
 <Steps>
