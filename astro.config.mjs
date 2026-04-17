@@ -33,7 +33,7 @@ export default defineConfig({
 			],
 			sidebar: [
 				{
-					label: 'Getting started',
+					label: 'Getting Started',
 					items: [
 						{ label: 'Homepage', slug: '' },
 						{ label: 'Getting started', slug: 'getting-started' },
@@ -42,7 +42,7 @@ export default defineConfig({
 					],
 				},
 				{
-					label: 'Writing Guides',
+					label: 'Editing & Writing',
 					items: [
 						{ label: 'Start editing and writing', slug: 'writing/start-writing' },
 						{ label: 'Using the visual editor', slug: 'writing/visual-editor' },

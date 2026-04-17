@@ -3,62 +3,72 @@ title: Writing a guide from scratch
 description: How we collaborate when you propose a new guide—from exploration through publishing.
 ---
 
+import { Steps } from '@astrojs/starlight/components';
+
 Follow this process when you are **writing a guide from scratch** or making **major updates** to an existing one. The goal is to help you spend time where it matters most and avoid writing a full draft before we align on direction.
 
 You are always welcome to draft independently. But in most cases, collaborating through this process leads to stronger guides and fewer revision rounds.
 
-Read the [contributor style guide](/writing/style/) for voice, tone, and how we phrase recommendations—it pairs with every phase below.
+Read the [contributor style guide](/writing/style/) for voice, tone, and how we phrase recommendations—it pairs with each step below.
 
-## At a glance
+## The process
 
-1. **Exploration:** confirm topic fit and contributor context  
-2. **Outline:** align on scope and structure before full drafting  
-3. **Drafting:** write in template, then iterate with review  
-4. **Publishing:** finalize, publish, and distribute
+<Steps>
+1. ### Choosing and scoping a guide
 
-## Phase 1: Exploration
+   A guide works best when it has **one clear focus**: one primary situation, risk, or goal—not a survey of everything tangentially related.
 
-**What happens:** You share the guide idea or update you have in mind.
+   We encourage you to reference our [guide proposals list](https://github.com/ActivistChecklist/ActivistChecklist/wiki/Guide-proposals) and see if any of those ideas are a fit for your skills and interests. Feel free to propose a new idea if you think it could help our audience.
 
-**What we ask for:**
+   **Start from a concrete reader situation.** Ask who this is for, what they are trying to do (or avoid), and what goes wrong if they do nothing. You should be able to describe the guide in one concrete, clear sentence (e.g. "This guide helps you prepare for a protest").
 
-- Your experience with the topic
-- Why this guide is useful for our audience right now
-- Examples of public writing where you explain complex ideas clearly
+   **Keep the promise narrow.** It is better to cover one slice thoroughly than to stitch several topics into a single guide.
 
-**Goal of this phase:** Confirm that the topic and framing fit what we can publish.
+   **Length and attention:** We assume someone may only give us [15 to 30 minutes](/writing/style#who-we-are-who-we-write-for). Aim for a guide they can use in one or two sittings: enough depth to act, not enough to replace a book or a training curriculum. You can and should use sections (with risk level boxes) to break up the guide into smaller, more manageable chunks.
 
-## Phase 2: Outline
+   **Action step:** [Contact us](https://activistchecklist.org/contact/) with the topic you have in mind. If possible, please share examples of public writing/training where you explain complex ideas clearly.
 
-**What happens:** We send an outline template and collaborate on the intro and section flow.
+1. ### Outline
 
-**Why this matters:** It is much easier to adjust direction at outline stage than after a full draft is written.
+   **What happens:** We collaborate with you on an outline—the intro and section flow—and align on scope before you write a full draft. It is much easier to adjust direction at outline stage than after a full draft is written.
 
-**Goal of this phase:** Lock the scope and structure so your drafting time is well spent.
+   **Goal of this phase:** Lock the scope and structure so your drafting time is well spent.
 
-## Phase 3: Drafting
+1. ### Drafting and revisions
 
-**What happens:** We share a Proton Doc template that matches site formatting (checklist items, how-to sections, and alerts). You submit a first full draft, then we run expert review and feedback rounds.
+   **What happens:** You write a first full draft that follows [guide structure and formatting](/writing/structure/) (checklist items, how-to sections, and alerts where they fit). Then we run expert review and feedback rounds.
 
-**Typical focus during revisions:**
+   **You can send a draft in multiple formats:**
+   
+   - Use our [visual editor](/writing/visual-editor/) and submit a pull request. **(Recommended)** 
+   - Edit the `.mdx` files directly in your [fork of the repository](https://github.com/ActivistChecklist/ActivistChecklist/fork) and submit a pull request. This requires creating a separate file for each checklist item, which can be tedious.
+   - Write it in a Proton Doc and we'll convert it to the correct format.
 
-- Accuracy and evidence
-- Clarity and plain-language framing
-- Recommendation strength and trade-offs
-- Consistency with our [style guide](/writing/style/) and [page structure and formatting](/writing/structure/) docs
+   **Typical focus during revisions:**
 
-**Goal of this phase:** Get to a publish-ready draft that is clear, practical, and trustworthy.
+   - Consistency with our [style guide](/writing/style/) and [page structure and formatting](/writing/structure/) docs
+   - Accuracy and citations to real-world examples
+   - Clarity and plain-language framing
+   - Recommendation strength and trade-offs
 
-## Phase 4: Publishing
+   **Goal of this phase:** Get to a publish-ready draft that is clear, practical, and trustworthy.
 
-**What happens:** We finalize copy, publish the guide on the site, and share it through our normal channels.
+1. ### Publishing
 
-All guides are currently published anonymously.
+   **What happens:** We finalize copy, publish the guide on the site, and share it through our normal channels.
+
+   All guides are currently published anonymously.
+
+</Steps>
+
+
 
 ## What helps drafts move faster
 
 - Start with the risk and who it affects
-- Make your primary recommendation obvious
+- Make your primary recommendation obvious (rather than listing multiple options all with equal priority)
 - Name trade-offs directly
+- Use plain language and avoid jargon
 - Keep language plain and actionable
 - Flag any areas where you want extra editor feedback
+- Keep the guide focused and to the point
