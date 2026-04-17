@@ -1,0 +1,51 @@
+---
+// Inline script bootstraps `data-theme` before paint; ThemeSelect owns the UI.
+---
+
+<script is:inline>
+  window.StarlightThemeProvider = (() => {
+    const storageKey = 'starlight-theme';
+    const getSystem = () =>
+      window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+
+    function parsePreference(raw) {
+      if (raw === 'light' || raw === 'dark') return raw;
+      return 'auto';
+    }
+
+    function getStoredRaw() {
+      return typeof localStorage !== 'undefined' ? localStorage.getItem(storageKey) : null;
+    }
+
+    function getPreference() {
+      return parsePreference(getStoredRaw());
+    }
+
+    function getEffective(preference) {
+      const p = preference !== undefined && preference !== null ? preference : getPreference();
+      if (p === 'light' || p === 'dark') return p;
+      return getSystem();
+    }
+
+    document.documentElement.dataset.theme = getEffective(getPreference());
+
+    function notifyPickers() {
+      queueMicrotask(() => {
+        document.querySelectorAll('starlight-theme-select').forEach((el) => {
+          if (typeof el.refreshThemePicker === 'function') el.refreshThemePicker();
+        });
+      });
+    }
+
+    return {
+      getPreference,
+      getEffective,
+      updatePickers(theme) {
+        const pref =
+          theme === undefined || theme === null ? getPreference() : parsePreference(theme);
+        document.documentElement.dataset.theme = getEffective(pref);
+        notifyPickers();
+      },
+    };
+  })();
+</script>

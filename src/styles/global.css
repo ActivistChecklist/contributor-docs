@@ -167,6 +167,11 @@
     letter-spacing: -0.01em;
   }
 
+  /* Hero title: smaller than Starlight default (was ~3xl–6xl). */
+  .hero h1 {
+    font-size: clamp(var(--sl-text-3xl), calc(0.2rem + 3.5vw), var(--sl-text-5xl));
+  }
+
   :where(.sl-markdown-content, .hero, .main-pane) :is(h2, h3) {
     font-family: var(--font-heading);
     font-weight: 700;

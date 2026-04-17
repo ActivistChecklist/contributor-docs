@@ -11,12 +11,25 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			plugins: [starlightLinksValidator()],
-			title: 'Activist Checklist Contributor Guide',
+			components: {
+				ThemeProvider: './src/components/starlight/ThemeProvider.astro',
+				ThemeSelect: './src/components/starlight/ThemeSelect.astro',
+			},
+			title: 'Contributor Guide',
+			logo: {
+				light: './src/assets/logo-bg-transparent.png',
+				dark: './src/assets/logo-bg-white-transparent.png',
+				alt: 'Activist Checklist',
+			},
+			editLink: {
+				baseUrl: 'https://github.com/ActivistChecklist/contributor-docs/blob/main/',
+			},
+			lastUpdated: true,
 			favicon: '/favicon-32x32.png',
 			customCss: ['./src/styles/global.css'],
 			social: [
-				{ icon: 'github', label: 'GitHub', href: 'https://github.com/ActivistChecklist/docs.activistchecklist.org' },
-				{ icon: 'blueSky', label: 'Bluesky', href: 'https://bsky.app/profile/activistchecklist.org' },
+				{ icon: 'github', label: 'GitHub', href: 'https://github.com/ActivistChecklist/contributor-docs' },
+				{ icon: 'blueSky', label: 'Bluesky', href: 'https://bsky.app/profile/AtivistChecklist.org' },
 			],
 			sidebar: [
 				{

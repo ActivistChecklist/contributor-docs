@@ -1,0 +1,249 @@
+---
+import { Icon } from '@astrojs/starlight/components';
+
+const label = Astro.locals.t('themeSelect.accessibleLabel');
+const optDark = Astro.locals.t('themeSelect.dark');
+const optLight = Astro.locals.t('themeSelect.light');
+const optAuto = Astro.locals.t('themeSelect.auto');
+---
+
+<starlight-theme-select>
+  <div class="theme-picker">
+    <button
+      type="button"
+      class="theme-trigger"
+      aria-haspopup="listbox"
+      aria-expanded="false"
+      aria-controls="starlight-theme-listbox"
+      id="starlight-theme-trigger"
+    >
+      <span class="sr-only">{label}</span>
+      <span class="theme-trigger-icons" data-display-icon="sun">
+        <Icon name="sun" class="theme-icon theme-icon-sun" />
+        <Icon name="moon" class="theme-icon theme-icon-moon" />
+      </span>
+    </button>
+    <div
+      class="theme-menu"
+      id="starlight-theme-listbox"
+      role="listbox"
+      aria-labelledby="starlight-theme-trigger"
+      hidden
+    >
+      <button type="button" class="theme-option" role="option" data-theme-value="auto" id="theme-opt-auto">
+        <Icon name="laptop" class="theme-option-icon" />
+        <span class="theme-option-label">{optAuto}</span>
+      </button>
+      <button type="button" class="theme-option" role="option" data-theme-value="light" id="theme-opt-light">
+        <Icon name="sun" class="theme-option-icon" />
+        <span class="theme-option-label">{optLight}</span>
+      </button>
+      <button type="button" class="theme-option" role="option" data-theme-value="dark" id="theme-opt-dark">
+        <Icon name="moon" class="theme-option-icon" />
+        <span class="theme-option-label">{optDark}</span>
+      </button>
+    </div>
+  </div>
+</starlight-theme-select>
+
+<script is:inline>
+  StarlightThemeProvider.updatePickers();
+</script>
+
+<script>
+  declare const StarlightThemeProvider: {
+    updatePickers(theme?: string | null): void;
+    getPreference(): 'auto' | 'dark' | 'light';
+    getEffective(preference?: 'auto' | 'dark' | 'light'): 'light' | 'dark';
+  };
+
+  const storageKey = 'starlight-theme';
+
+  type Preference = 'auto' | 'dark' | 'light';
+
+  function storePreference(pref: Preference): void {
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem(storageKey, pref === 'light' || pref === 'dark' ? pref : '');
+    }
+  }
+
+  /** Trigger icon matches the active appearance only: light → sun, dark → moon (manual or auto). */
+  function iconForEffectiveTheme(effective: 'light' | 'dark'): 'moon' | 'sun' {
+    return effective === 'light' ? 'sun' : 'moon';
+  }
+
+  class StarlightThemeSelect extends HTMLElement {
+    #onDocClick = (e: MouseEvent) => {
+      if (!this.contains(e.target as Node)) this.closeMenu();
+    };
+
+    #onKeydown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') this.closeMenu();
+    };
+
+    constructor() {
+      super();
+      const trigger = this.querySelector<HTMLButtonElement>('.theme-trigger');
+      const menu = this.querySelector<HTMLDivElement>('.theme-menu');
+
+      trigger?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isClosed = menu?.hasAttribute('hidden');
+        if (isClosed) this.openMenu();
+        else this.closeMenu();
+      });
+
+      this.querySelectorAll<HTMLButtonElement>('.theme-option').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const v = btn.dataset.themeValue;
+          if (v === 'auto' || v === 'light' || v === 'dark') {
+            storePreference(v);
+            StarlightThemeProvider.updatePickers();
+            this.closeMenu();
+            trigger?.focus();
+          }
+        });
+      });
+
+      matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
+        if (StarlightThemeProvider.getPreference() === 'auto') {
+          document.documentElement.dataset.theme = StarlightThemeProvider.getEffective('auto');
+          this.refreshThemePicker();
+        }
+      });
+    }
+
+    connectedCallback() {
+      this.refreshThemePicker();
+      document.addEventListener('click', this.#onDocClick);
+      document.addEventListener('keydown', this.#onKeydown);
+    }
+
+    disconnectedCallback() {
+      document.removeEventListener('click', this.#onDocClick);
+      document.removeEventListener('keydown', this.#onKeydown);
+    }
+
+    refreshThemePicker() {
+      const icons = this.querySelector<HTMLSpanElement>('.theme-trigger-icons');
+      const pref = StarlightThemeProvider.getPreference();
+      const effective = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+      const icon = iconForEffectiveTheme(effective);
+      icons?.setAttribute('data-display-icon', icon);
+
+      this.querySelectorAll<HTMLButtonElement>('.theme-option').forEach((btn) => {
+        const v = btn.dataset.themeValue as Preference | undefined;
+        const selected = v === pref;
+        btn.setAttribute('aria-selected', selected ? 'true' : 'false');
+      });
+    }
+
+    openMenu() {
+      const menu = this.querySelector<HTMLDivElement>('.theme-menu');
+      const trigger = this.querySelector<HTMLButtonElement>('.theme-trigger');
+      menu?.removeAttribute('hidden');
+      trigger?.setAttribute('aria-expanded', 'true');
+    }
+
+    closeMenu() {
+      const menu = this.querySelector<HTMLDivElement>('.theme-menu');
+      const trigger = this.querySelector<HTMLButtonElement>('.theme-trigger');
+      menu?.setAttribute('hidden', '');
+      trigger?.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  customElements.define('starlight-theme-select', StarlightThemeSelect);
+</script>
+
+<style>
+  @layer starlight.core {
+    .theme-picker {
+      position: relative;
+    }
+
+    .theme-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      margin: 0;
+      padding: 0.5rem;
+      margin-inline: calc(var(--sl-nav-pad-x) * -0.25);
+      border-radius: 0.5rem;
+      background: transparent;
+      color: var(--sl-color-gray-2);
+      cursor: pointer;
+    }
+
+    .theme-trigger:hover,
+    .theme-trigger:focus-visible {
+      color: var(--sl-color-white);
+      outline: 2px solid var(--sl-color-accent);
+      outline-offset: 2px;
+    }
+
+    .theme-trigger-icons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.125rem;
+    }
+
+    .theme-trigger-icons[data-display-icon='sun'] .theme-icon-moon,
+    .theme-trigger-icons[data-display-icon='moon'] .theme-icon-sun {
+      display: none;
+    }
+
+    .theme-menu {
+      position: absolute;
+      inset-inline-end: 0;
+      top: calc(100% + 0.25rem);
+      z-index: 50;
+      min-width: 11.5rem;
+      padding: 0.35rem;
+      margin: 0;
+      list-style: none;
+      background: var(--sl-color-bg-nav);
+      border: 1px solid var(--sl-color-gray-5);
+      border-radius: 0.5rem;
+      box-shadow:
+        0 4px 6px -1px rgb(0 0 0 / 0.12),
+        0 2px 4px -2px rgb(0 0 0 / 0.12);
+    }
+
+    .theme-option {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      width: 100%;
+      margin: 0;
+      padding: 0.45rem 0.65rem;
+      border: 0;
+      border-radius: 0.35rem;
+      background: transparent;
+      color: var(--sl-color-gray-1);
+      font: inherit;
+      font-size: var(--sl-text-sm);
+      text-align: start;
+      cursor: pointer;
+    }
+
+    .theme-option-icon {
+      flex-shrink: 0;
+      font-size: 1rem;
+      opacity: 0.92;
+    }
+
+    .theme-option:hover,
+    .theme-option:focus-visible {
+      background: var(--sl-color-gray-6);
+      outline: none;
+    }
+
+    .theme-option[aria-selected='true'] {
+      color: var(--sl-color-accent-high);
+      font-weight: 600;
+    }
+  }
+</style>
