@@ -189,26 +189,38 @@
     font-weight: 600;
     letter-spacing: -0.01em;
   }
+}
 
-  /*
-   * Starlight gives markdown images max-width: 100%, so large assets span the
-   * full text column. Cap width and center so figures don’t always feel edge-to-edge.
-   */
-  .sl-markdown-content img:not(:where(.not-content *)) {
-    width: auto;
-    max-width: min(100%, var(--ac-content-img-max, 42rem));
-    height: auto;
-    margin-inline: auto;
-  }
+/*
+ * Markdown images: Starlight sets max-width: 100% in @layer starlight.content.
+ * Unlayered rules beat layered ones (see above). A plain rem cap (e.g. 42rem)
+ * was still almost full column width—use ch so figures sit inside the prose line.
+ * Override: :root { --ac-content-img-max: 40rem; }
+ *
+ * Border/radius: standalone img vs <picture> so we don’t double-wrap inner imgs.
+ */
+.sl-markdown-content img:not(:where(.not-content *)):not(:where(picture *)) {
+  width: auto;
+  max-width: min(100%, var(--ac-content-img-max, min(56ch, 36rem)));
+  height: auto;
+  margin-inline: auto;
+  box-sizing: border-box;
+  border: 1px solid var(--ac-content-img-border, var(--sl-color-hairline));
+  border-radius: var(--ac-content-img-radius, 0.5rem);
+}
 
-  .sl-markdown-content picture:not(:where(.not-content *)) {
-    display: block;
-    max-width: min(100%, var(--ac-content-img-max, 42rem));
-    margin-inline: auto;
-  }
+.sl-markdown-content picture:not(:where(.not-content *)) {
+  display: block;
+  max-width: min(100%, var(--ac-content-img-max, min(56ch, 36rem)));
+  margin-inline: auto;
+  box-sizing: border-box;
+  border: 1px solid var(--ac-content-img-border, var(--sl-color-hairline));
+  border-radius: var(--ac-content-img-radius, 0.5rem);
+  overflow: hidden;
+}
 
-  .sl-markdown-content picture:not(:where(.not-content *)) img {
-    width: 100%;
-    height: auto;
-  }
+.sl-markdown-content picture:not(:where(.not-content *)) img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
