@@ -5,27 +5,30 @@ description: Structural and formatting standards for ActivistChecklist.org guide
 
 When writing guides, pages, and checklist items, follow these structural and formatting standards.
 
-## Guide-level structure
+## Checklist guide structure
 
-Every **guide** follows a consistent pattern:
+![Page layout](../../../assets/structure-page-layout.png)
 
-1. **Title**: Short, action-oriented or descriptive. Examples: "Security Essentials," "Prepare for a Protest," "Doxxing Defense Checklist."
-2. **Metadata line**: "Last reviewed on [date]" and "Takes about [time estimate]."
-3. **Introductory section**: 2-4 paragraphs that explain:
+Every **checklist guide** follows a consistent pattern:
+
+1. **Title:** Short, action-oriented or descriptive. Examples: "Security Essentials," "Prepare for a Protest," "Doxxing Defense Checklist."
+2. **Metadata line:** "Last reviewed on [date]" and "Takes about [time estimate]."
+3. **Introductory section:** 2-4 paragraphs that explain:
    1. who this guide is for (and who it is NOT for, if applicable),
    2. what it covers,
    3. what risks it addresses (and what it does *NOT* cover, if applicable),
    4. and a reminder that people can take practical steps to protect themselves and their community. End this section with something empowering.
-4. **Sections organized by risk level**: We usually use a tiered system. Each tier should include a short description of who it is for.
+4. **Sections organized by risk level**: (See [below for more details](#sections).)
+8. **Cross-links:** End each guide with "Keep learning with these related guides" linking to 2-3 relevant checklists.
+1. **Recommended guides:** List 2-4 guides that are related to the current guide.
+
+## Sections 
+
+**Section ordering**: If a guide uses risk levels, order sections as everyone, then medium threat, then high threat. (Note: You can have more than one section for a risk level. Example: the [Essentials](https://activistchecklist.org/essentials/) guide has a "get started" section before the main "everyone" section.)
    - **Baseline / "everyone"**: steps for anyone doing the work.
    - **Enhanced / "medium-threat"**: steps for people in leadership or visible roles.
    - **High-profile / "high-threat"**: steps for people at serious risk of targeting.
    - Not every guide needs risk-level sections if another structure is clearer (example: [Emergency Guide](https://activistchecklist.org/emergency)).
-   - You can have more than one section for a risk level. Example: the [Essentials](https://activistchecklist.org/essentials/) guide has a "get started" section before the main "everyone" section.
-8. **Cross-links**: End each guide with "Keep learning with these related guides" linking to 2-3 relevant checklists.
-
-
-**Section ordering**: If a guide uses risk levels, order sections as everyone, then medium threat, then high threat.
 
 **Section length (checklist items per section)**:
 1. 4-7 checklist items is ideal.
@@ -40,6 +43,8 @@ Every **guide** follows a consistent pattern:
    *If I could only recommend one step, what would it be? Then what are the next one or two highest-impact steps?*
 
 ## Checklist item structure
+
+![Checklist item layout](../../../assets/structure-checklist-layout.png)
 
 Each **checklist item** follows this pattern:
 
@@ -58,14 +63,22 @@ Each **checklist item** follows this pattern:
 5. **How-to section**: Step-by-step instructions, platform by platform (iPhone, Android, Mac, Windows where relevant). Use numbered lists for sequences and bold key actions.
 6. **Notes, caveats, and alternatives**: Add edge cases, warnings, and fallback options after the main instructions.
 
-## Platforms and menu path style
+## Specific formatting blocks you can use
 
-Use this format in `<HowTo>` boxes and similar instruction sections:
+### `<HowTo>` boxes
+Use this format in `<HowTo>` boxes for actionable instructions.
 
+Example: 
 - *On iPhone:* Open Signal > Settings > Notifications > Notification Content > Select "**No Name or Content**"
 - *On Android:* Open Signal > Settings > Notifications > Show > Select "**No name or message**"
 
-## Alert usage
+Example: 
+1. Download Brave Browser
+2. Install it on your devices
+3. Set it as your default browser
+4. etc.
+
+### `<Alert>` usage
 
 Use `<Alert>` components in context, how-to, or notes sections as needed:
 

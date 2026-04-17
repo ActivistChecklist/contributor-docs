@@ -189,4 +189,26 @@
     font-weight: 600;
     letter-spacing: -0.01em;
   }
+
+  /*
+   * Starlight gives markdown images max-width: 100%, so large assets span the
+   * full text column. Cap width and center so figures don’t always feel edge-to-edge.
+   */
+  .sl-markdown-content img:not(:where(.not-content *)) {
+    width: auto;
+    max-width: min(100%, var(--ac-content-img-max, 42rem));
+    height: auto;
+    margin-inline: auto;
+  }
+
+  .sl-markdown-content picture:not(:where(.not-content *)) {
+    display: block;
+    max-width: min(100%, var(--ac-content-img-max, 42rem));
+    margin-inline: auto;
+  }
+
+  .sl-markdown-content picture:not(:where(.not-content *)) img {
+    width: 100%;
+    height: auto;
+  }
 }
