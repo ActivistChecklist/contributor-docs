@@ -41,8 +41,14 @@ export default defineConfig({
 						{ label: 'Protecting your privacy', slug: 'getting-started/protecting-your-privacy' },
 					],
 				},
-				{
-					label: 'Editing & Writing',
+			{
+				label: 'Making Suggestions',
+				items: [
+					{ label: 'Make a suggestion', slug: 'suggestions/feedback' },
+				],
+			},
+			{
+				label: 'Editing & Writing',
 					items: [
 						{ label: 'Start editing and writing', slug: 'writing/start-writing' },
 						{ label: 'Using the visual editor', slug: 'writing/visual-editor' },
