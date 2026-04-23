@@ -41,20 +41,21 @@ export default defineConfig({
 						{ label: 'Protecting your privacy', slug: 'getting-started/protecting-your-privacy' },
 					],
 				},
-			{
-				label: 'Making Suggestions',
-				items: [
-					{ label: 'Make a suggestion', slug: 'suggestions/feedback' },
-				],
-			},
-			{
-				label: 'Editing & Writing',
+				{
+					label: 'Making Suggestions',
+					items: [
+						{ label: 'Make a suggestion', slug: 'suggestions/feedback' },
+					],
+				},
+				{
+					label: 'Editing & Writing',
 					items: [
 						{ label: 'Start editing and writing', slug: 'writing/start-writing' },
 						{ label: 'Using the visual editor', slug: 'writing/visual-editor' },
 						{ label: 'Style guide', slug: 'writing/style' },
 						{ label: 'Writing a guide from scratch', slug: 'writing/writing-a-guide-from-scratch' },
 						{ label: 'Page structure & formatting', slug: 'writing/structure' },
+						{ label: 'Writing content in markdown', slug: 'writing/markdown-reference' },
 					],
 				},
 				{

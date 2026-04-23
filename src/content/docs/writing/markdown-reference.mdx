@@ -1,0 +1,337 @@
+---
+title: Writing content in markdown
+description: How to write content in markdown for ActivistChecklist.org.
+---
+
+Each piece of content on ActivistChecklist.org is an `.mdx` file. Every file has two parts: 
+
+1. A frontmatter block at the top (between the `---` lines) with structured metadata.
+2. The actual content, formatted with markdown. Can contain [markdown components](#components-reference). (If you're new to markdown, check out this [markdown cheat sheet](https://www.markdownguide.org/cheat-sheet/) for reference.)
+
+If you're using the [visual editor](/writing/visual-editor/), most of this is handled for you. But if you're editing files directly, this page is your reference.
+
+See [page structure & formatting](/writing/structure/) for guidance on *what* to write. This page covers *how* to format it in markdown.
+
+## Pages
+
+Pages are standalone informational content such as the About page, the Privacy page, and Resources. No checklist structure, just text. Files live in [`/content/en/pages/`](https://github.com/ActivistChecklist/ActivistChecklist/tree/main/content/en/pages).
+
+```mdx
+---
+title: About This Site
+firstPublished: 2025-01-09
+lastUpdated: 2026-01-23
+---
+
+We started Activist Checklist because we were seeing a lot of confusion and
+inaction around digital security in Palestine solidarity organizing...
+
+## Why we built this site
+
+Looking around, we found that existing resources were either too simple or
+too complicated. We wanted to create a comprehensive approach that
+wouldn't make your eyes glaze over.
+
+<Alert type="info">
+  We are currently choosing to remain anonymous to preserve our own privacy
+  given the risks involved in this work.
+</Alert>
+
+## Our sources
+
+We draw on a number of sources...
+```
+
+**Frontmatter fields:**
+
+| Field | Required? | What it's for |
+| --- | --- | --- |
+| `title` | Required | The page title |
+| `firstPublished` | Optional | When it was first published (`YYYY-MM-DD`) |
+| `lastUpdated` | Optional | When it was last updated (`YYYY-MM-DD`) |
+
+## Guides
+
+Guides are the main checklist pages, such as "Security Essentials" or "Prepare for a Protest." They use a structured format with sections and checklist items. Files live in [`/content/en/guides/`](https://github.com/ActivistChecklist/ActivistChecklist/tree/main/content/en/guides).
+
+```mdx
+---
+title: Prepare for a Protest
+estimatedTime: 30 minutes
+excerpt: >
+  When police access one person's phone, they can map entire activist
+  networks. The steps here are designed to help protect not just you,
+  but the networks connected to you.
+relatedGuides:
+  - essentials
+  - signal
+firstPublished: 2024-12-11
+lastUpdated: 2026-03-18
+---
+
+When police access one person's phone, they can map entire activist networks
+(your contacts, your Signal chats, your location history, and more). The steps
+here are designed to help protect not just you, but the networks connected
+to you.
+
+**Who this checklist is for:** Anyone attending protests, direct actions,
+or demonstrations where police presence is expected.
+
+<Section title="Baseline phone protections" slug="phone-baseline">
+  <RiskLevel level="everyone" mode="single_line">
+    This section is for anyone attending a low-risk protest. Organizers
+    and higher-risk participants should also do the sections below.
+  </RiskLevel>
+
+  <ChecklistItemGroup>
+    <ChecklistItem slug="biometrics-disable" />
+    <ChecklistItem slug="passcode" />
+    <ChecklistItem slug="signal-at-protests" />
+    <ChecklistItem slug="location" />
+  </ChecklistItemGroup>
+</Section>
+
+<Section title="Enhanced protections" slug="enhanced">
+  <RiskLevel level="medium" mode="for_you_if">
+    * **You're an organizer or visible leader** in social movement spaces.
+    * **You're likely to be targeted** based on identities you hold.
+    * **You have close connections** to many at-risk individuals.
+  </RiskLevel>
+
+  <ChecklistItemGroup>
+    <ChecklistItem slug="vpn" />
+    <ChecklistItem slug="lockdown" />
+    <ChecklistItem slug="secure-phone" />
+  </ChecklistItemGroup>
+</Section>
+```
+
+**Frontmatter fields:**
+
+| Field | Required? | What it's for |
+| --- | --- | --- |
+| `title` | Required | Guide title (action-oriented or descriptive) |
+| `estimatedTime` | Optional | e.g. `30 minutes` |
+| `excerpt` | Optional | 1- to 2-sentence description shown on the homepage and listings |
+| `relatedGuides` | Optional | List of guide slugs linked at the bottom ("Keep learning"). Can have 0 to 4. |
+| `firstPublished` | Optional | `YYYY-MM-DD` |
+| `lastUpdated` | Optional | `YYYY-MM-DD` |
+
+See the [components reference](#components-reference) below for details on `<Section>`, `<RiskLevel>`, `<ChecklistItem>`, and `<ChecklistItemGroup>`.
+
+## Checklist items
+
+Checklist items are the individual action steps. Each one lives in its own file inside [`/content/en/checklist-items/`](https://github.com/ActivistChecklist/ActivistChecklist/tree/main/content/en/checklist-items).
+
+```mdx
+---
+title: Set your phone passcode to 8 to 10 random digits
+preview: >
+  It takes years for cops to crack an 8-digit random passcode. They can
+  probably guess your current passcode in less than 5 minutes with
+  automated tools.
+do: >
+  Use a random passcode generator to create an 8 to 10-digit code
+dont: >
+  Use any passcode you thought of yourself (dates, patterns on the
+  keyboard, etc.). Do not use 6-digit passcodes if possible.
+titleBadges: []          # or: [important]
+firstPublished: 2025-05-12
+lastUpdated: 2026-01-31
+---
+
+Context paragraph: name the threat in plain language, then explain how
+this step helps. Keep it to 1–3 paragraphs.
+
+<HowTo title="How to change your passcode">
+  1. Generate a random 8 to 10-digit passcode using this
+     [random passcode generator](https://strongphrase.net/passcode).
+     (Don't make one up yourself — humans are bad at random!)
+  2. Change your passcode:
+
+     *On iPhone:* Settings > Face ID & Passcode > Change Passcode >
+     Passcode Options > **Custom Numeric Code**
+
+     *On Android:* Settings > Security > Screen Lock > **PIN/Password**
+
+  3. **Practice it** at least 10 times right now so you're more likely
+     to remember it.
+</HowTo>
+
+Notes, caveats, and alternatives go after the HowTo block.
+
+<Alert type="warning">
+  A 6-digit passcode is much weaker — even a random one. Use 8 to 10
+  digits if at all possible.
+</Alert>
+```
+
+**Frontmatter fields:**
+
+| Field | Required? | What it's for |
+| --- | --- | --- |
+| `title` | Required | Imperative statement of what to do, e.g. "Set your phone passcode to 8 to 10 random digits." Try to make this clear enough that someone could do it without expanding the item if they were motivated and tech-savvy enough. |
+| `preview` | Recommended | 1 to 2 sentence benefit (or risk) to mention. Shows while checklist item is collapsed. |
+| `do` | Optional | 👍 The DO recommendation |
+| `dont` | Optional | 👎 The DON'T recommendation |
+| `titleBadges` | Optional | Array. Adds a badge next to the title. Only one value is available: `[important]`. Leave as `[]` to show no badge. |
+| `firstPublished` | Optional | `YYYY-MM-DD` |
+| `lastUpdated` | Optional | `YYYY-MM-DD` |
+
+`do` and `dont` usually go together. Try to include both or neither.
+
+---
+
+## Images & files
+
+### Images
+
+Images live in [`/public/images/content/`](https://github.com/ActivistChecklist/ActivistChecklist/tree/main/public/images/content) in the repo. To add a new image, add the file there and reference it with a standard Markdown image tag:
+
+```mdx
+![Alt text describing the image](/images/content/your-image.png)
+```
+
+Use descriptive `alt` text. It helps screen readers and shows when the image fails to load.
+
+### Downloadable files
+
+PDFs and other downloads live in [`/public/files/downloads/`](https://github.com/ActivistChecklist/ActivistChecklist/tree/main/public/files/downloads). Link to them like any other link:
+
+```mdx
+[Download the planning worksheet (PDF)](/files/downloads/your-file.pdf)
+```
+
+### Uploading via the visual editor
+
+If you're using the [visual editor](/writing/visual-editor/), you can upload images directly through the editor interface. No need to add them to the repo manually.
+
+## Components reference
+
+### `<Section>`
+
+Wraps a section. Can be a section containing just text, or a section containing checklist items. Can be used on a [Page](#pages) or a [Guide](#guides).
+
+| Prop | Required? | What it's for |
+| --- | --- | --- |
+| `title` | Required | Section heading shown to readers |
+| `slug` | Optional | URL anchor for the section |
+
+### `<RiskLevel>`
+
+Shows the risk-level indicator at the top of a section. Goes inside `<Section>`, before `<ChecklistItemGroup>`. 
+
+Use anytime the sections on a checklist are grouped by risk level.
+
+| Prop | Required? | What it's for |
+| --- | --- | --- |
+| `level` | Required | `everyone`, `medium`, or `high` |
+| `mode` | Required | `default`: use the pre-defined risk message for that level<br />`single_line`: write a custom message for this section that says "This section is for"<br />`for_you_if`: bulleted "This section is for you if..." list |
+
+### `<ChecklistItemGroup>` and `<ChecklistItem>`
+
+`<ChecklistItemGroup>` wraps a set of checklist items. Always use it to wrap multiple checklist items, don't place `<ChecklistItem />` components outside of one.
+
+`<ChecklistItem slug="..." />` loads a checklist item by its slug. The slug is the filename without `.mdx` and must exist in [`/content/en/checklist-items/`](https://github.com/ActivistChecklist/ActivistChecklist/tree/main/content/en/checklist-items).
+
+```mdx
+<ChecklistItemGroup>
+  <ChecklistItem slug="passcode" />
+  <ChecklistItem slug="biometrics-disable" />
+</ChecklistItemGroup>
+```
+
+### `<Alert>`
+
+Use `<Alert>` anywhere in guide body or checklist item content to flag something worth calling out.
+
+We almost never use the title property. Instead, we put a few bold words at the start of the alert to make it stand out.
+
+Can contain markdown.
+
+```mdx
+<Alert type="info">
+  An aside or FYI. Good for context that doesn't fit in the main flow.
+</Alert>
+
+<Alert type="info" title="Easier with a crew">
+  Most people mean to get around to these steps and never do. Consider
+  working through this list with friends at a [security party](/party/).
+</Alert>
+
+<Alert type="success">
+  **iPhone tip:** Press the side button 5 times to force your passcode
+  to be used for the next unlock — even if Face ID is enabled.
+</Alert>
+
+<Alert type="warning">
+  **A VPN doesn't make you fully anonymous.** For sensitive browsing,
+  consider [Tor Browser](https://www.torproject.org/) alongside your
+  everyday browser.
+</Alert>
+```
+
+| Prop | Required? | Notes |
+| --- | --- | --- |
+| `type` | Optional | `info`: an aside, FYI, or context that doesn't fit the main flow<br />`success`: an encouraging tip, shortcut, or good-news moment<br />`warning`: a caution, limitation, or gotcha the reader shouldn't miss<br />Defaults to `info` if omitted |
+| `title` | Optional | Adds a bold heading at the top of the callout |
+
+### `<HowTo>`
+
+The `<HowTo>` tag contains the actual steps someone needs to take. Everything before/after it is context about why this is important and additional notes. 
+
+It is almost always used inside a [checklist item](#checklist-items).
+
+Can contain markdown.
+
+```mdx
+<HowTo title="How to set up Signal">
+  1. [Install Signal](https://signal.org/) on your phone.
+  2. Enable disappearing messages:
+
+     *On iPhone:* Signal > Settings > Privacy > Disappearing Messages >
+     **Set your default timer**
+
+     *On Android:* Signal > Settings > Privacy > Default Timer After
+     Reading > **Set your default timer**
+
+  3. [Follow the Signal Security Checklist](/signal/) for more steps.
+</HowTo>
+```
+
+| Prop | Required? | What it's for |
+| --- | --- | --- |
+| `title` | Required | Heading shown at the top of the box. Always starts with "How to..." |
+
+**For platform-specific paths** inside a `<HowTo>`, use italicized platform name, bold key actions at the end of the menu path:
+
+```mdx
+<HowTo title="How to change your passcode">
+  * *On iPhone:* Settings > Face ID & Passcode > **Change Passcode**
+  * *On Android:* Settings > Security > Screen Lock > **PIN/Password**
+</HowTo>
+```
+
+### `<InlineChecklist>`
+
+Converts a bullet list inside a `<HowTo>` into an interactive checklist readers can tick off. Use it when you have a list of steps that don't have a strict order, such as a settings checklist where each item is independent.
+
+```mdx
+<HowTo title="How to configure Signal">
+  <InlineChecklist>
+    * **Enable disappearing messages by default:**
+
+      Signal > Settings > Privacy > Disappearing Messages > **Set a time**
+
+    * **Create a username** and share that instead of your phone number:
+
+      Signal > Settings > Tap your name > Tap the @ symbol > **Set username**
+
+    * **Hide message previews in notifications:**
+
+      Signal > Settings > Notifications > Notification Content > **No Name or Content**
+  </InlineChecklist>
+</HowTo>
+```
+
+No props. Just wrap a bullet list with it inside a `<HowTo>`.

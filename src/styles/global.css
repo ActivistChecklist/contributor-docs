@@ -224,3 +224,39 @@
   height: auto;
   display: block;
 }
+
+/* Table overrides — shaded header instead of all-hairline rows */
+.sl-markdown-content table:not(:where(.not-content *)) {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.sl-markdown-content :is(th, td):not(:where(.not-content *)) {
+  border-bottom: 1px solid var(--sl-color-gray-6);
+  padding: 0.5rem 0.875rem;
+  vertical-align: baseline;
+}
+
+/* Re-apply padding removed by Starlight's first/last-child rules */
+.sl-markdown-content :is(th:first-child, td:first-child):not(:where(.not-content *)) {
+  padding-inline-start: 0.875rem;
+}
+
+.sl-markdown-content :is(th:last-child, td:last-child):not(:where(.not-content *)) {
+  padding-inline-end: 0.875rem;
+}
+
+/* Shaded header band */
+.sl-markdown-content thead tr:not(:where(.not-content *)) {
+  background-color: var(--sl-color-gray-6);
+}
+
+/* Heavier separator between header and body */
+.sl-markdown-content th:not(:where(.not-content *)) {
+  border-bottom: 2px solid var(--sl-color-gray-4);
+}
+
+/* No trailing border on the last row */
+.sl-markdown-content tbody tr:last-child td:not(:where(.not-content *)) {
+  border-bottom: none;
+}
