@@ -54,7 +54,15 @@ Each **checklist item** follows this pattern:
    - Not our style: "Passcode considerations"
 2. **One-line summary** (subtitle): A short sentence explaining the benefit. Not all items need one.
    - "It takes years for cops to crack an 8-digit random passcode. They can probably guess your current passcode in less than 5 minutes with automated tools."
-3. **DO / DO NOT block** (when applicable): A quick, scannable recommendation pair. Bold tool names.
+3. **DO / DO NOT block** (when applicable): A quick, scannable recommendation pair. Bold tool names. Only include this block when it earns its place — not every item needs one. Use it when:
+   - It answers a genuinely common question ("but which browser?" "what about Telegram?")
+   - It captures a mistake people commonly make that isn't obvious from the title ("DON'T keep putting off security updates")
+   - The DO and DON'T are meaningfully different from what the title or context already says
+
+   Skip it when:
+   - The item is already brief and essentially just a single setting path to follow. The DO would just repeat the title.
+   - The situation it addresses is too specific or niche to be widely relevant
+   - You'd need more than one sentence to make the DON'T make sense. If it needs that much context, put it in the body instead.
 4. **Context paragraph(s)**: 1-3 paragraphs for threat context, rationale, and trade-offs.
    1. Start with 1-2 sentences naming the threat in plain language, with evidence links when possible.
    2. Follow with 2-3 sentences explaining how the intervention helps.
@@ -68,11 +76,15 @@ Each **checklist item** follows this pattern:
 ### `<HowTo>` boxes
 Use this format in `<HowTo>` boxes for actionable instructions.
 
-Example: 
-- *On iPhone:* Open Signal > Settings > Notifications > Notification Content > Select "**No Name or Content**"
-- *On Android:* Open Signal > Settings > Notifications > Show > Select "**No name or message**"
+Example menu paths (use the [`<MenuPath>`](/writing/markdown-reference/#menupath) component):
 
-Example: 
+```mdx
+<MenuPath>*iPhone:* Open Signal > Tap your profile picture > **Settings** > **Notifications** > **Notification Content** > Select **No Name or Content**</MenuPath>
+<MenuPath>*Android:* Open Signal > Tap your profile picture to open **Settings** > **Notifications** > **Show** > Select **No name or message**</MenuPath>
+```
+
+Example numbered steps:
+
 1. Download Brave Browser
 2. Install it on your devices
 3. Set it as your default browser

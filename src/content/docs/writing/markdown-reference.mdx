@@ -5,8 +5,8 @@ description: How to write content in markdown for ActivistChecklist.org.
 
 Each piece of content on ActivistChecklist.org is an `.mdx` file. Every file has two parts: 
 
-1. A frontmatter block at the top (between the `---` lines) with structured metadata.
-2. The actual content, formatted with markdown. Can contain [markdown components](#components-reference). (If you're new to markdown, check out this [markdown cheat sheet](https://www.markdownguide.org/cheat-sheet/) for reference.)
+1. A **frontmatter block** at the top (between the `---` lines) with structured metadata.
+2. The **actual content**, formatted with markdown. Can contain [markdown components](#components-reference). (If you're new to markdown, check out this [markdown cheat sheet](https://www.markdownguide.org/cheat-sheet/) for reference.)
 
 If you're using the [visual editor](/writing/visual-editor/), most of this is handled for you. But if you're editing files directly, this page is your reference.
 
@@ -146,13 +146,12 @@ this step helps. Keep it to 1–3 paragraphs.
 <HowTo title="How to change your passcode">
   1. Generate a random 8 to 10-digit passcode using this
      [random passcode generator](https://strongphrase.net/passcode).
-     (Don't make one up yourself — humans are bad at random!)
+     (Don't make one up yourself, humans are bad at random!)
   2. Change your passcode:
 
-     *On iPhone:* Settings > Face ID & Passcode > Change Passcode >
-     Passcode Options > **Custom Numeric Code**
+     <MenuPath>*iPhone:* **Settings** > **Face ID & Passcode** > **Change Passcode** > **Passcode Options** > **Custom Numeric Code**</MenuPath>
 
-     *On Android:* Settings > Security > Screen Lock > **PIN/Password**
+     <MenuPath>*Android:* **Settings** > **Security** > **Screen Lock** > **PIN/Password**</MenuPath>
 
   3. **Practice it** at least 10 times right now so you're more likely
      to remember it.
@@ -289,11 +288,9 @@ Can contain markdown.
   1. [Install Signal](https://signal.org/) on your phone.
   2. Enable disappearing messages:
 
-     *On iPhone:* Signal > Settings > Privacy > Disappearing Messages >
-     **Set your default timer**
+     <MenuPath>*iPhone:* Open Signal > Tap your profile picture > **Settings** > **Privacy** > **Disappearing Messages** > **Set your default timer**</MenuPath>
 
-     *On Android:* Signal > Settings > Privacy > Default Timer After
-     Reading > **Set your default timer**
+     <MenuPath>*Android:* Open Signal > Tap your profile picture to open **Settings** > **Privacy** > **Default Timer After Reading** > **Set your default timer**</MenuPath>
 
   3. [Follow the Signal Security Checklist](/signal/) for more steps.
 </HowTo>
@@ -303,14 +300,91 @@ Can contain markdown.
 | --- | --- | --- |
 | `title` | Required | Heading shown at the top of the box. Always starts with "How to..." |
 
-**For platform-specific paths** inside a `<HowTo>`, use italicized platform name, bold key actions at the end of the menu path:
+**For UI navigation paths** inside (or outside) a `<HowTo>`, use the [`<MenuPath>`](#menupath) component. It handles platform headers, separator arrows, and accessibility for you.
+
+### `<MenuPath>`
+
+Formats UI navigation paths consistently across the site. Use it anywhere you have a "Settings > Privacy > Screen Lock"-style sequence, in a `<HowTo>` or in body prose.
+
+The component renders separators as styled arrows, attaches a platform icon when it recognises the header (iPhone, Android, Mac, macOS, Windows), and announces the separator to screen readers as the localized word "then."
+
+#### Block form (default)
+
+Stands as its own block with an optional platform header on the line above the path. Use this when the path is the main content of the step.
 
 ```mdx
-<HowTo title="How to change your passcode">
-  * *On iPhone:* Settings > Face ID & Passcode > **Change Passcode**
-  * *On Android:* Settings > Security > Screen Lock > **PIN/Password**
+<HowTo title="How to disable Signal notifications">
+  <MenuPath>*iPhone:* Open Signal > Tap your profile picture > **Settings** > **Notifications** > **Notification Content** > Select **No Name or Content**</MenuPath>
+  <MenuPath>*Android:* Open Signal > Tap your profile picture to open **Settings** > **Notifications** > **Show** > Select **No name or message**</MenuPath>
 </HowTo>
 ```
+
+#### Inline form
+
+Sits inside a sentence in surrounding prose. No header is rendered.
+
+```mdx
+Enable disappearing messages by default: <MenuPath inline>Open Signal > Tap your profile picture > **Settings** > **Privacy** > **Disappearing Messages** > set to your desired time</MenuPath>.
+```
+
+| Prop | Required? | What it's for |
+| --- | --- | --- |
+| `inline` | Optional | Boolean. Renders inline (no header, no block spacing). Defaults to block. |
+
+#### Authoring rules
+
+**Platform header (block form only).** If the path is platform-specific, start with an italic-and-colon header like `*iPhone:*`, `*Android:*`, `*Mac:*`, `*macOS:*`, or `*Windows:*`. The component strips the colon and italics for display and adds a brand icon (Apple for iPhone and Mac, Android, Windows). It also auto-strips a leading "On ", so write `*iPhone:*` rather than `*On iPhone:*`. Italic-colon headers for unknown platforms (`*Brave:*`, `*Firefox:*`) work too; they just render without an icon.
+
+**Separator.** Write `>` between steps. The component renders it as `→` (or `←` in right-to-left languages). You can write `→` directly if you prefer; the component recognises both.
+
+**Bold what is on screen.** Bold every literal label the reader will see and tap. Don't bold:
+
+* Action verbs: Open, Tap, Click, Select, Press, Toggle off, Enable, Disable
+* App names used as containers, like "Open Signal" or "Open Brave"
+* Descriptive phrases like "your profile picture," "the search icon," "the @ symbol"
+* Bracketed placeholders like `\[App Name]`
+* The italic platform header itself
+
+```mdx
+Open Signal > Tap your profile picture > **Settings** > **Notifications** > **Show** > Select **No name or content**
+```
+
+**Strip wrapping quotes around UI labels.** Quotes around button or option names get dropped.
+
+| Don't | Do |
+| --- | --- |
+| `**"Disable iPhone Unlock"**` | `Disable **iPhone Unlock**` |
+| `Select "Never"` | `Select **Never**` |
+
+**Side notes go outside.** If a parenthetical or aside isn't part of the path, pull it out after the closing tag.
+
+```mdx
+<MenuPath>*iPhone:* **Settings** > **Privacy & Security** > Disable **Location Services**</MenuPath>
+
+*(Quicker shortcut: Say to Siri "Disable location tracking")*
+```
+
+**A trailing sentence-style step belongs inside the path,** even when it's not a tappable label.
+
+```mdx
+<MenuPath inline>Open Signal > Tap your profile picture > **Settings** > **Privacy** > **Disappearing Messages** > set to your desired time</MenuPath>.
+```
+
+#### Signal paths
+
+Signal paths follow a fixed shape across the site:
+
+| Context | Format |
+| --- | --- |
+| Non-platform Signal path | `Open Signal > Tap your profile picture > **Settings** > ...` |
+| iPhone-only Signal path | `*iPhone:* Open Signal > Tap your profile picture > **Settings** > ...` |
+| Android-only Signal path | `*Android:* Open Signal > Tap your profile picture to open **Settings** > ...` |
+
+On Android, tapping the profile picture opens Settings directly, so the platform-distinguished form collapses those two steps into "Tap your profile picture to open **Settings**" (one segment, no chevron between).
+
+#### Right-to-left support
+
+The component picks the locale-correct arrow (`→` for LTR, `←` for RTL) automatically based on the active locale. Authors don't need to do anything different for RTL languages.
 
 ### `<InlineChecklist>`
 
@@ -321,15 +395,15 @@ Converts a bullet list inside a `<HowTo>` into an interactive checklist readers 
   <InlineChecklist>
     * **Enable disappearing messages by default:**
 
-      Signal > Settings > Privacy > Disappearing Messages > **Set a time**
+      <MenuPath inline>Open Signal > Tap your profile picture > **Settings** > **Privacy** > **Disappearing Messages** > set a time</MenuPath>
 
     * **Create a username** and share that instead of your phone number:
 
-      Signal > Settings > Tap your name > Tap the @ symbol > **Set username**
+      <MenuPath inline>Open Signal > Tap your profile picture > **Settings** > Tap your name > Tap the **@** symbol > **Set username**</MenuPath>
 
     * **Hide message previews in notifications:**
 
-      Signal > Settings > Notifications > Notification Content > **No Name or Content**
+      <MenuPath inline>Open Signal > Tap your profile picture > **Settings** > **Notifications** > **Notification Content** > Select **No Name or Content**</MenuPath>
   </InlineChecklist>
 </HowTo>
 ```
