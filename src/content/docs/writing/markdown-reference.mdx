@@ -205,6 +205,51 @@ PDFs and other downloads live in [`/public/files/downloads/`](https://github.com
 
 If you're using the [visual editor](/writing/visual-editor/), you can upload images directly through the editor interface. No need to add them to the repo manually.
 
+## Term definitions
+
+Some terms on the site open a short definition popup when readers tap them. All definitions are listed on the [Terms & definitions](https://activistchecklist.org/glossary/) page.
+
+### Add a popup to a term
+
+Write a markdown link with `term:` and the term's slug where the URL would go:
+
+```mdx
+Apps on your phone sell your location to [data brokers](term:data-broker).
+```
+
+To find a term's slug, copy its link on the [Terms & definitions](https://activistchecklist.org/glossary/) page. The slug is the part after the `#`.
+
+### When to use a popup
+
+Use popups sparingly:
+
+* **Not on the term's own page or checklist item.**
+* **Not where the sentence already explains the term.**
+* **At most one per checklist item.**
+
+### Add or edit a definition
+
+Definitions live in [`messages/en.json`](https://github.com/ActivistChecklist/ActivistChecklist/blob/main/messages/en.json) under `definitions`:
+
+```json
+"data-broker": {
+  "term": "Data Broker",
+  "definition": "A company that collects personal information like your address, phone number, and relatives from public records and other sources, then sells it. Cops, stalkers, and people trying to [dox you](term:doxxing) can buy this data.",
+  "source": "Doxxing Defense Checklist",
+  "url": "/doxxing/"
+}
+```
+
+`source` and `url` are optional. Together they add a "Learn more" link to the popup. Definitions can use bold, italics, links, and links to other terms.
+
+Only edit the English file. Other languages are [translated on Crowdin](/translating/start-translating/).
+
+### Writing a good definition
+
+* **Say what it is, then why it matters to activists.** The data broker definition explains what the companies do, then ends with "Cops, stalkers, and people trying to dox you can buy this data."
+* **Keep it to a few sentences.** Readers open a popup in the middle of reading something else.
+* **Follow the [style guide](/writing/style/).** Definitions use the same plain, friendly voice as the rest of the site.
+
 ## Components reference
 
 ### `<Section>`
