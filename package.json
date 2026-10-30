@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "serve:dist": "serve --config serve.json --listen tcp://0.0.0.0:${PORT:-3000}"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.8",
@@ -15,6 +16,7 @@
     "@astrojs/starlight-tailwind": "^5.0.0",
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.0.1",
+    "serve": "^14.2.4",
     "sharp": "^0.34.2",
     "starlight-links-validator": "^0.23.0",
     "tailwindcss": "^4.2.2",
