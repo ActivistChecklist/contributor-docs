@@ -454,3 +454,19 @@ Converts a bullet list inside a `<HowTo>` into an interactive checklist readers 
 ```
 
 No props. Just wrap a bullet list with it inside a `<HowTo>`.
+
+### `<StepList>`
+
+Converts an ordered list into a sequence of step-by-step items. Use it when you have a list of steps that should be followed in order.
+
+Can be used in a [Guide](#guides), including within [checklist items](#checklist-items) and [`<HowTo>`](#howto) components.
+
+```mdx
+There are two things to track related to disappearing messages:
+<StepList>
+1. **First, change your default** so any thread you make has this feature enabled.
+2. **Second, make sure it is enabled for threads that other people start:** if someone else starts the thread, it may not have disappearing messages enabled. You may need to enable it.
+</StepList>
+```
+
+No props. Wrap an ordered list inside a `<StepList>`.
